@@ -6,20 +6,23 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item" v-if="token!=''">
           <RouterLink class="nav-link" to="/">Home</RouterLink>
         </li>
-         <li class="nav-item">
+         <li class="nav-item" v-if="token!=''">
           <RouterLink class="nav-link" to="/profile">Profile</RouterLink>
         </li>
-         <li class="nav-item">
+         <li class="nav-item" v-if="token!=''">
           <RouterLink class="nav-link" to="/shouts">Shouts</RouterLink>
         </li>
-         <li class="nav-item">
+         <li class="nav-item" v-if="token==''">
           <RouterLink class="nav-link" to="/login">Login</RouterLink>
         </li>
-         <li class="nav-item">
+         <li class="nav-item" v-if="token!=''">
+          <a class="nav-link" href="#" @click="logout">Logout</a>
+        </li>
+         <li class="nav-item" v-if="token==''">
           <RouterLink class="nav-link" to="/register">Register</RouterLink>
         </li>
         
@@ -32,8 +35,37 @@
 </template>
 
 <script>
+import { useAuthStore } from '../stores/auth'
+import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
 export default{
     setup(){
+
+      const authStore = useAuthStore()
+      const router = useRouter()
+
+      const {token} =storeToRefs(useAuthStore())
+
+      async function logout(){
+            await fetch('http://localhost:8000/api/logout', {
+              method: "post",
+              headers:{
+                "Accept": "application/json",
+                "Authorization": "Bearer" + authStore.token
+              }
+            }).then(response=>response.json())
+            .then(data=>{
+              if(data.status=="success"){
+                authStore.destroy()
+                router.push('/login')
+
+              }
+            })
+      }
+
+      return {
+        logout, token
+      }
 
     }
 }
@@ -43,6 +75,6 @@ export default{
 <style scoped>
 li{
     position:relative;
-    left: 800px;
+    left: 720px;
 }
 </style>
