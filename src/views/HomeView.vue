@@ -1,16 +1,15 @@
-
 <template>
       <div>
-        <h1>Home Page</h1>
+    
       </div>
-          <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+          <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 30px;">
             <div class="card-header">
-              <h3 style="font-size:15px; font-weight:regular;">Newly Registered User</h3> 
+              <h3 style="font-size:15px; font-weight:regular;">User Information</h3> 
             </div>
 
-            <h2 style="font-size:20px;  position:relative; left:250px;">Token: {{token}}</h2> 
+            <h2 style="font-size:20px;  position:fixed; left:390px;">Token: {{token}}</h2> 
             <hr>
-            <table class="table-bordered text-center bg-dark">
+            <table class="table-bordered text-center bg-success">
               <thead>
                 <tr>
                   <th class="text-white">Last Name</th>
@@ -24,12 +23,12 @@
               
 
              <tbody>
-              <td class="text-dark bg-white">{{user.lname}}</td>
-              <td class="text-dark bg-white">{{user.fname}}</td>
-              <td class="text-dark bg-white">{{user.course}}</td>
-              <td class="text-dark bg-white">{{user.year}}</td>
-              <td class="text-dark bg-white">{{user.address}}</td>
-              <td class="text-dark bg-white">{{user.mobile}}</td>
+              <td class="text-white bg-secondary">{{user.lname}}</td>
+              <td class="text-white bg-secondary">{{user.fname}}</td>
+              <td class="text-white bg-secondary">{{user.course}}</td>
+              <td class="text-white bg-secondary">{{user.year}}</td>
+              <td class="text-white bg-secondary">{{user.address}}</td>
+              <td class="text-white bg-secondary">{{user.mobile}}</td>
 
 
 

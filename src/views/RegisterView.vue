@@ -4,7 +4,7 @@
         <div class="col-md-4 offset-md-4">
             <form @submit.prevent = "handleSubmit">
                      <div class="card shadow-lg p-3 mb-5 bg-white rounded">
-                          <div class="card-header bg-info rounded">
+                          <div class="card-header bg-success rounded">
                             <h1 style="font-size:25px; font-weight:regular; margin-left: 50px;">User Registration</h1>
                           </div>
 

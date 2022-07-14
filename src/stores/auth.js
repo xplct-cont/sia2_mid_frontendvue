@@ -7,16 +7,20 @@ export const useAuthStore = defineStore({
     user: {},
     token: "",
    
+   
   }),
   actions: {
-         saveAuth(user, token){
+         saveAuth(user, token, ){
             this.user = user
             this.token = token
+         
+          
            
          },
          destroy(){
             this.user = {}
             this.token = ""
+         
           
          }
   }
